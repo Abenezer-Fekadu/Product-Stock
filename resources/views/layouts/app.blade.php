@@ -24,6 +24,7 @@
     
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('custom/css/styles.css') }}" rel="stylesheet" />
+    @yield('scripts')
 
 </head>
 
@@ -86,6 +87,5 @@
     
     <script src="{{ asset('custom/js/scripts.js') }}""></script>
 
-    @yield('scripts')
 </body>
 </html>
