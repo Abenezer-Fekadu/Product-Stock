@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->string('category');
             $table->integer('price');
+            $table->double('kilo');
             $table->string('main_image');
             $table->text('images');
             $table->string('status')->default(1);

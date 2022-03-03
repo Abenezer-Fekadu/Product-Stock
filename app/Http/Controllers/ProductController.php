@@ -60,6 +60,7 @@ class ProductController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'address' => 'required',
+            'kilo' => 'required|numeric',
             'price' => 'required|numeric',
             'main_image' => 'required|mimes:jpeg,png,jpg',
             'images.*' => 'required|mimes:jpeg,png,jpg'
@@ -102,6 +103,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'category' => $request->category,
             'price' => $request->price,
+            'kilo' => $request->kilo,
             'images' => json_encode($data),
             'main_image' => $main_image_name
         ]);
@@ -109,6 +111,7 @@ class ProductController extends Controller
         return redirect(route('product.index'))->with('success', 'Product Added Successfully');
 
     }
+    
     /**
      * Display the specified resource.
      *
@@ -119,11 +122,7 @@ class ProductController extends Controller
     {
         //
         $product = Products::FindOrFail($id);
-
-        $histories = InterestHistory::all()->where('product_id', '=', $id);
-
-
-        return view('product.show', compact('product', 'histories'));
+        return view('product.show', compact('product'));
     }
 
     /**
@@ -175,6 +174,7 @@ class ProductController extends Controller
             'address' => 'required',
             'category' => 'required',
             'price' => 'required|numeric',
+            'kilo' => 'required|numeric',
             'main_image' => 'mimes:jpeg,png,jpg',
             'images.*' => 'mimes:jpeg,png,jpg'
         ]);
@@ -224,6 +224,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->category = $request->category;
         $product->price = $request->price;
+        $product->kilo = $request->kilo;
 
         $product->save();
         
@@ -233,18 +234,21 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Products  $products
+     * @param  \Illuminate\Http\Request  $request
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $product)
+    public function destroy($id)
     {
-        //
+
+        $product = Products::FindOrFail($id);
+
         foreach(json_decode($product->images) as $pic){
             @unlink("images/". $pic);
         }
 
         if(Storage::disk('public')->exists('main_product/'.$product->main_image)){
-            Storage::disk('public')->delete('main_product/'.$produtc->main_image);
+            Storage::disk('public')->delete('main_product/'.$product->main_image);
         }
 
         $product->delete();
