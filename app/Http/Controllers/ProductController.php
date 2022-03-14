@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
+use App\Models\Product;
 use App\Models\InterestHistory;
 
 use Illuminate\Http\Request;
@@ -23,16 +23,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-
+        //Index Page 
         if (Auth::user()){
-
-            $products = Products::latest()->where('user_id', Auth::id())->paginate(6);
-            $product_count = Products::all()->count();
+            $products = Product::latest()->where('user_id', Auth::id())->paginate(6);
+            $product_count = Product::all()->where('user_id', Auth::id())->count();
             return view('product.index', compact('products', 'product_count'));    
         }
-
-
         return redirect()->back();
 
     }
@@ -44,7 +40,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // Create Page
         return view('product.create');
     }
 
@@ -78,7 +74,6 @@ class ProductController extends Controller
             if (!Storage::disk('public')->exists('main_product')) {
                 Storage::disk('public')->makeDirectory('main_product');
             }
-
               // Resizing the Image  and upload
             $croppedImage = Image::make($main_image)->resize(400,300)->stream();
             Storage::disk('public')->put('main_product/'.$main_image_name, $croppedImage);
@@ -96,8 +91,7 @@ class ProductController extends Controller
             }
 
         }
-
-        auth()->user()->products()->create([
+        Product::where('user_id', Auth::id())->create([
             'name' => $request->name,
             'address' => $request->address,
             'description' => $request->description,
@@ -121,7 +115,7 @@ class ProductController extends Controller
     public function show($id)
     {
         //
-        $product = Products::FindOrFail($id);
+        $product = Product::where('user_id', Auth::id())->FindOrFail($id);
         return view('product.show', compact('product'));
     }
 
@@ -133,7 +127,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Products::FindOrFail($id);
+        $product = Product::FindOrFail($id)->where('user_id', Auth::id());
 
         return view('product.edit', compact('product'));
     }
@@ -147,15 +141,13 @@ class ProductController extends Controller
     */
 
     public function change($id) {
-        $product = Products::find($id);
+        $product = Product::find($id)->where('user_id', Auth::id());
         if ($product->status == 1){
             $product->status = 0;
         }else{
             $product->status = 1;
         }
-
         $product->save();
-
         return redirect()->back();
 
     }
@@ -180,7 +172,7 @@ class ProductController extends Controller
         ]);
 
 
-        $product = Products::FindOrFail($id);
+        $product = Product::FindOrFail($id)->where('user_id', Auth::id());
 
 
         $main_image = $request->file('main_image');
@@ -241,7 +233,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
 
-        $product = Products::FindOrFail($id);
+        $product = Product::FindOrFail($id)->where('user_id', Auth::id());
 
         foreach(json_decode($product->images) as $pic){
             @unlink("images/". $pic);

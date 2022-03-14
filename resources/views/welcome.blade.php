@@ -72,20 +72,22 @@
                                     <stop class="gradient-start-color" offset="0%"></stop>
                                     <stop class="gradient-end-color" offset="100%"></stop>
                                 </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="50"></circle></svg
-                        ><svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83" xmlns="http://www.w3.org/2000/svg">
+                            </defs> 
+                            <circle cx="50" cy="50" r="50"></circle>
+                        </svg>
+
+                        <svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83" xmlns="http://www.w3.org/2000/svg">
                             <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(120.42 -49.88) rotate(45)"></rect>
-                            <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(-49.88 120.42) rotate(-45)"></rect></svg
-                        ><svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(-49.88 120.42) rotate(-45)"></rect>
+                        </svg>
+
+                        <svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle>
+                        </svg>
+
                         <div class="device-wrapper">
                             <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
                                 <div class="screen bg-black">
-                                    <!-- PUT CONTENTS HERE:-->
-                                    <!-- * * This can be a video, image, or just about anything else.-->
-                                    <!-- * * Set the max width of your media to 100% and the height to-->
-                                    <!-- * * 100% like the demo example below.-->
-                                    <video muted="muted" autoplay="" loop="" style="max-width: 100%; height: 100%"><source src="{{ asset('custom/images/demo-screen.mp4') }}" type="video/mp4" /></video>
+                                    {{-- Put Video Here --}}
                                 </div>
                             </div>
                         </div>
@@ -117,7 +119,7 @@
                     <br />
                     Start Expanding.
                 </h2>
-                <a class="btn btn-outline-light py-3 px-4 rounded-pill" href="https://startbootstrap.com/theme/new-age" target="_blank">Sign Up</a>
+                <a class="btn btn-outline-light py-3 px-4 rounded-pill" href="{{ route('register') }}" >Sign Up</a>
             </div>
         </div>
     </section>
@@ -138,7 +140,7 @@
                     <div class="testimonial-item mx-auto mb-5 mb-lg-0">
                         <img class="img-fluid rounded-circle mb-3" src="{{ asset('custom/images/testimonials-2.jpg') }}" alt="..." />
                         <h5>Fred S.</h5>
-                        <p class="font-weight-light mb-0">"Websire is amazing. I've been using it to post lots of super nice products."</p>
+                        <p class="font-weight-light mb-0">"Website is amazing. I've been using it to post lots of super nice products."</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -151,6 +153,7 @@
             </div>
         </div>
     </section>
+    
     {{-- Footer --}}
     @include('layouts.footer')
 
@@ -201,7 +204,6 @@
                             </div>
                         </div>
 
-                        {{-- <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div> --}}
 
                         <!-- Submit Button-->
                         <div class="d-grid"><button class="btn btn-primary rounded-pill btn-lg" id="submitButton" type="submit">Submit</button></div>
@@ -211,6 +213,5 @@
             </div>
         </div>
     </div>
-    
 @endsection
     

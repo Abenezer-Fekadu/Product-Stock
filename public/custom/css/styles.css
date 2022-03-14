@@ -11782,8 +11782,8 @@ section {
 .device[data-device="iPhoneX"][data-orientation="portrait"][data-color="black"]
     .screen {
     top: 3.1855955679%;
-    left: 6.8870523416%;
-    width: 86.2258953168%;
+    /* left: 6.8870523416%; */
+    /* width: 86.2258953168%; */
     height: 93.6288088643%;
 }
 
@@ -11865,8 +11865,6 @@ section.cta:before {
 .features-device-mockup .device-wrapper {
     max-width: 10rem;
 }
-
-
 
 @media (min-width: 576px) {
     .features-device-mockup .circle {

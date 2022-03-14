@@ -22,20 +22,20 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-
+// Auth Routes
 Auth::routes();
-
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/product', [ProductController::class, 'index'])->name('product.index');
-Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
-Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
-Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
-Route::get('product/switch-status/{id}', [ProductController::class, 'change'])->name('product.status');
-Route::put('product/update/{id}', [ProductController::class, 'update'])->name('product.update');
-Route::delete('product/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+// Product Routes
+Route::get('/products', [ProductController::class, 'index'])->name('product.index');
+Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/products', [ProductController::class, 'store'])->name('product.store');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::get('products/switch-status/{id}', [ProductController::class, 'change'])->name('product.status');
+Route::put('products/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 
 

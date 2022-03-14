@@ -22,7 +22,7 @@
     </div>
 
     <div class="container py-3">
-        @if ($products->count() > 0)
+        @if ($product_count > 0)
             @foreach ($products as $key=>$product)
             <div class="row justify-content-center mb-3">
                 <div class="col-md-12 col-xl-10">
