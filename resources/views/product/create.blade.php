@@ -47,14 +47,14 @@
 
                         <div class="form-group mb-3">
                             <label for="main_image">Main Image: </label>
-                            <input type="file" name="main_image" class="form-control" id="main_image">
+                            <input type="file" name="main_image" class="form-control" id="main_image" />
                         </div>
     
                         <div class="form-group mb-3">
                             <label for="images">Product Images: </label>
-                            <input type="file" name="images[]" class="form-control" multiple="true" id="images">
+                            <input type="file" name="images[]" class="form-control" id="images" multiple/>
                         </div>
-
+                        
                         <div class="form-group">
                                 <button type="submit" class="btn btn-success mx-2">Add</button>
                                 <a href="{{ URL::previous() }}" class="btn btn-danger wave-effect" >Back</a>

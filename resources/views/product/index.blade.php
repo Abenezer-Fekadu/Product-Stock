@@ -4,7 +4,6 @@
     All Products
 @endsection
 
-
 @section('content')
 <!-- App badge section-->
 <section class="bg-gradient-primary-to-secondary mb-3" id="download">
@@ -49,7 +48,7 @@
                                 </div>
                                 
                                 <div class="col-md-6 col-lg-6 col-xl-6">
-                                    <h5>{{ $product->name }}</h5>
+                                    <h5> <a href="{{ route('product.show', $product->id) }}" style="text-decoration: none; color:black">{{ $product->name }}</a></h5>
                                     <div class="d-flex flex-row">
                                         <span>{{ $product->address}}</span>
                                         <span class="text-primary"> - </span>
@@ -81,7 +80,7 @@
                                     @endif
 
                                     <div class="d-flex flex-column mt-4">
-                                        <a href="{{ route('product.show', $product->id) }}"  class="btn btn-primary btn-sm">Details</a>
+                                        <a href="{{ route('product.show', $product->id) }}"  class="btn btn-primary btn-sm">Add To Cart</a>
                                         <div class="d-flex justify-content-center mt-2">
                                             
                                             <a href="{{ route('product.status', $product->id) }}"  class="btn btn-warning btn-sm ">Status</a>
@@ -113,6 +112,8 @@
     </div>
 </div>
 @endsection
+
+
 
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>

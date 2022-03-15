@@ -41,7 +41,11 @@ class ProductController extends Controller
     public function create()
     {
         // Create Page
-        return view('product.create');
+        if (Auth::user()){
+            return  view('product.create');
+        }
+        return redirect()->back();
+
     }
 
     /**
@@ -61,7 +65,7 @@ class ProductController extends Controller
             'main_image' => 'required|mimes:jpeg,png,jpg',
             'images.*' => 'required|mimes:jpeg,png,jpg'
         ]);
-
+        
         //handle main image
         $main_image = $request->file('main_image');
         if($main_image)
@@ -91,7 +95,8 @@ class ProductController extends Controller
             }
 
         }
-        Product::where('user_id', Auth::id())->create([
+
+        auth()->user()->products()->create([
             'name' => $request->name,
             'address' => $request->address,
             'description' => $request->description,
@@ -114,10 +119,15 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
-        $product = Product::where('user_id', Auth::id())->FindOrFail($id);
-        return view('product.show', compact('product'));
+        // Show Page
+        if (Auth::user()){
+            $product = Product::FindOrFail($id);
+            return view('product.show', compact('product'));
+        }
+        return redirect()->back();
+
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -127,9 +137,12 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::FindOrFail($id)->where('user_id', Auth::id());
+        if (Auth::user()){
+            $product = Product::FindOrFail($id);
+            return view('product.edit', compact('product'));
+        }
+        return redirect()->back();
 
-        return view('product.edit', compact('product'));
     }
     
 
@@ -141,7 +154,7 @@ class ProductController extends Controller
     */
 
     public function change($id) {
-        $product = Product::find($id)->where('user_id', Auth::id());
+        $product = Product::find($id);
         if ($product->status == 1){
             $product->status = 0;
         }else{
@@ -172,7 +185,7 @@ class ProductController extends Controller
         ]);
 
 
-        $product = Product::FindOrFail($id)->where('user_id', Auth::id());
+        $product = Product::FindOrFail($id);
 
 
         $main_image = $request->file('main_image');
