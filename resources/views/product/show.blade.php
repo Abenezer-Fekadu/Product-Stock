@@ -124,7 +124,6 @@
                       </div>
                   </div>
               </div>
-
           </div>
       </div>
   </div>
@@ -132,8 +131,8 @@
 @endsection
 
 
-
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script type="text/javascript" src="{{ asset('custom/js/update.js') }}""></script>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
 <script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
 
