@@ -9,7 +9,6 @@
     <link href="{{ asset('custom/css/all.css') }}" rel="stylesheet" />
 @endsection
 
-
 @section('content')
 <!-- App badge section-->
 <section class="bg-gradient-primary-to-secondary mb-3" id="download">
@@ -23,7 +22,7 @@
 <div class=" m-5">
     <div class="d-flex justify-content-between">
         <h4>Number of Products: {{ $product_count }}</h4>
-        <a href="{{route('product.create')}}" class="btn btn-outline-success btn-md">New</a>
+        <a href="{{route('product.create')}}" class="btn btn-outline-success btn-md rounded-circle"> + </a>
     </div>
 
     <div id="mobile-filter">
@@ -60,7 +59,6 @@
             </form>
         </div>
     </div>
-    
     <!-- Sidebar filter section -->
     <section id="sidebar">
         <p> Home | <b>All Products</b></p>
@@ -125,7 +123,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <div class="col-md-6 col-lg-5 col-xl-6">
                                         <h5> <a href="{{ route('product.show', $product->id) }}" style="text-decoration: none; color:black">{{ $product->name }}</a></h5>
                                         <div class="d-flex flex-row">
                                             <span>{{ $product->address}}</span>
@@ -144,7 +142,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                    <div class="col-md-6 col-lg-4 col-xl-3 border-sm-start-none border-start">
                                         <div class="d-flex flex-row align-items-center mb-1">
                                             <h4 class="mb-1 me-0"> Price/Kilo: ${{ $product->price}}</h4>
                                         </div>
