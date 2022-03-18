@@ -2,6 +2,7 @@
 @section('title')
     Add Product
 @endsection
+
 @section('content')
 <div class="container vh-100 mt-5">
     <h1 class="text-center pt-5">Add New Product</h1>        
@@ -23,7 +24,7 @@
                 </div>
 
                 <div class="row mb-3"> 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label class="mb-2" for="category">Category</label>
                             <select class="form-control" id="category" name="category">
                                 <option selected>{{ old('category') }}</option>
@@ -33,9 +34,21 @@
                             </select>
                         {{-- <input type="text" class="form-control" placeholder="Electronics" id="category" name="category" value="{{ old('category') }}"> --}}
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label class="mb-2" for="kilo">Kilo</label>
                         <input type="number" class="form-control" placeholder="4" id="kilo" name="kilo" value="{{ old('kilo') }}">
+                    </div>
+                    
+                    <div class="form-group col-md-4">
+                        <label for="date" class="mb-2">Date</label>
+                        <div id="datepicker" class="form-group date">
+                            <input type="text" class="form-control" id="date"/>
+                            <span class="form-group-append">
+                            <span class="form-group-text bg-light d-block">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -70,5 +83,11 @@
         </div> <!-- /.card-body -->
     </div><!-- /.card -->
 </div><!-- /.container -->
+@endsection
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+@section('scripts')
+<script type="text/javascript" src="{{ asset('custom/js/date.js') }}"></script>
 @endsection
