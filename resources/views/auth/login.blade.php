@@ -27,7 +27,7 @@
                     </div>
         
                 <!-- Password input -->
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-3">
                         <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
                         <label class="form-label" for="form1Example23">{{ __('Password') }}</label>
 
@@ -38,7 +38,7 @@
                     @enderror
                     </div>
     
-                    <div class="d-flex justify-content-around align-items-center mb-4">
+                    <div class="d-flex justify-content-around align-items-center mb-3">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -47,7 +47,7 @@
                             </label>                    </div>
     
                             @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                            <a class="btn btn-link text-decoration-none" href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
                             </a>
                         @endif                

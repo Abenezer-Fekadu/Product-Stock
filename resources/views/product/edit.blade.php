@@ -92,3 +92,9 @@
 <!-- /.container -->
 
 @endsection
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+@section('scripts')
+<script type="text/javascript" src="{{ asset('custom/js/date.js') }}"></script>
+@endsection
